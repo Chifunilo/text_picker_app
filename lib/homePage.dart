@@ -1,10 +1,10 @@
+import 'dart:ffi';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -107,111 +107,90 @@ class _HomepageState extends State<Homepage> {
 
 
   Widget build(BuildContext context) {
-    return Container( decoration: BoxDecoration(
-      gradient: LinearGradient(
-          colors: [
-            const Color(0xFF003714),
-            const Color(0xFF00933C),
-            const Color(0xFF00B84C),
-            const Color(0xFF00DA65),
-            const Color(0xFF00ED65),
-
-          ],
-          begin: const FractionalOffset(0.0, 0.0),
-          end: const FractionalOffset(1.0, 0.0),
-          stops: [0.0, 1.0, 2.0, 3.0, 4.0],
-          tileMode: TileMode.clamp),
-    ),
-      child: Scaffold( backgroundColor: Colors.transparent,
-
-        appBar: AppBar(backgroundColor: Color.fromARGB(157, 0, 0, 0), title: Center(child: Text("Text and face recogniser",
-          style: GoogleFonts.juliusSansOne(color: Colors.white),))),
-        body:
-        SingleChildScrollView(scrollDirection: Axis.vertical,
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [SizedBox(height: 20,),
-                if (!textScanning && imageFile == null)
-                  Container(
-                    width: 400,
-                    height: 400,
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),
-                      color: const Color.fromARGB(218, 0, 0, 0),
-                    ),
+    return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 59, 59, 59),
+      appBar: AppBar(title: Center(child: Text("Text and face recogniser"))),
+      body: SingleChildScrollView(scrollDirection: Axis.vertical,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              if (!textScanning && imageFile == null)
+                Container(
+                  width: 400,
+                  height: 400,
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 255, 255, 255),
                   ),
-
-                if (imageFile != null)
-                  SizedBox(
-                    width: 400,
-                    height: 400,
-                    child: Image.file(File(imageFile!.path), fit: BoxFit.cover),
-                  ),
-
-                SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        getImage();
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(border: Border.all(width: 2,color: Color.fromARGB(
-                            255, 6, 165, 70)),
-                          borderRadius: BorderRadius.circular(30),
-                          color: const Color.fromARGB(255, 0, 0, 0),
-                        ),
-                        width: 150,
-                        height: 50,
-                        child: Center(
-                          child: Text(
-                            "Gallery",
-                            style: GoogleFonts.juliusSansOne(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: 10),
-                    InkWell(
-                      onTap: ( ) {getCameraImage();},
-                      child: Container(
-                        decoration: BoxDecoration(border: Border.all(width: 2,color: Color.fromARGB(
-                            255, 6, 165, 70)),
-                          borderRadius: BorderRadius.circular(30),
-                          color: const Color.fromARGB(
-                              255, 0, 0, 0)
-                        ),
-                        width: 150,
-                        height: 50,
-                        child: Center(
-                          child: Text(
-                            "Camera",
-                            style: GoogleFonts.juliusSansOne(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
                 ),
-                if (scannedText.isNotEmpty)
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Text(
-                      scannedText,
-                      style: GoogleFonts.juliusSansOne(color: Colors.white),
-                      textAlign: TextAlign.center,
-                    ),
-                  )
 
-              ],
-            ),
+              if (imageFile != null)
+                SizedBox(
+                  width: 400,
+                  height: 400,
+                  child: Image.file(File(imageFile!.path), fit: BoxFit.cover),
+                ),
+
+              SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  InkWell(
+                    onTap: () {
+                      getImage();
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: const Color.fromARGB(255, 0, 0, 0),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Gallery",
+                          style: GoogleFonts.juliusSansOne(
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      width: 100,
+                      height: 100,
+                    ),
+                  ),
+                  SizedBox(width: 5),
+                  InkWell(
+                    onTap: () {},
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: const Color.fromARGB(255, 0, 0, 0),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Camera",
+                          style: GoogleFonts.juliusSansOne(
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      width: 100,
+                      height: 100,
+                    ),
+                  ),
+                ],
+              ),
+              if (scannedText.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text(
+                    scannedText,
+                    style: GoogleFonts.juliusSansOne(color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ),
+                )
+
+            ],
           ),
         ),
       ),
