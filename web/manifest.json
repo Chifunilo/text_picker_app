@@ -1,6 +1,6 @@
 {
-    "name": "newwheatherapp",
-    "short_name": "newwheatherapp",
+    "name": "text_picker_app",
+    "short_name": "text_picker_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
