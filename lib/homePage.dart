@@ -175,7 +175,7 @@ class _HomepageState extends State<Homepage> {
                     ),
                     SizedBox(width: 10),
                     InkWell(
-                      onTap: () {},
+                      onTap: (getCameraImage()) {},
                       child: Container(
                         decoration: BoxDecoration(border: Border.all(width: 2,color: Color.fromARGB(
                             255, 0, 204, 89)),
