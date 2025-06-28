@@ -151,9 +151,8 @@ class _HomepageState extends State<Homepage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     InkWell(
-                      onTap: () {
-                        getImage();
-                      },
+                      onTap:
+                        getImage,
                       child: Container(
                         decoration: BoxDecoration(border: Border.all(width: 2,color: Color.fromARGB(
                             255, 0, 170, 67)),
