@@ -160,6 +160,8 @@ class _HomepageState extends State<Homepage> {
                           borderRadius: BorderRadius.circular(30),
                           color: const Color.fromARGB(255, 0, 0, 0),
                         ),
+                        width: 150,
+                        height: 50,
                         child: Center(
                           child: Text(
                             "Gallery",
@@ -169,8 +171,6 @@ class _HomepageState extends State<Homepage> {
                             ),
                           ),
                         ),
-                        width: 150,
-                        height: 50,
                       ),
                     ),
                     SizedBox(width: 10),
@@ -182,6 +182,8 @@ class _HomepageState extends State<Homepage> {
                           borderRadius: BorderRadius.circular(30),
                           color: const Color.fromARGB(255, 0, 0, 0),
                         ),
+                        width: 150,
+                        height: 50,
                         child: Center(
                           child: Text(
                             "Camera",
@@ -191,8 +193,6 @@ class _HomepageState extends State<Homepage> {
                             ),
                           ),
                         ),
-                        width: 150,
-                        height: 50,
                       ),
                     ),
                   ],
